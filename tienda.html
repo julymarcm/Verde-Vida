@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - Jardines Urbanos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header - Mantiene el mismo diseño del index -->
+    <header class="bg-white shadow">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex space-x-7">
+                    <div class="flex-shrink-0 h-12 w-40">
+                        <img src="logo.png" alt="Logo" class="h-12">
+                    </div>
+                    <nav class="flex space-x-4">
+                        <a href="#" class="text-gray-700 hover:text-green-600">Inicio</a>
+                        <a href="#" class="text-gray-700 hover:text-green-600">Tienda</a>
+                        <a href="#" class="text-gray-700 hover:text-green-600">Blog</a>
+                        <a href="#" class="text-gray-700 hover:text-green-600">Contáctanos</a>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="py-2 px-4 bg-green-600 text-white rounded hover:bg-green-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg>
+                    </a>
+                    <a href="#" class="py-2 px-4 bg-green-600 text-white rounded hover:bg-green-700">Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal de la tienda -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Barra de búsqueda -->
+        <div class="mb-8">
+            <div class="flex bg-white rounded-lg shadow-md p-4">
+                <input type="text" placeholder="Buscar productos..." class="w-full px-4 py-2 rounded-l border focus:outline-none focus:border-green-500">
+                <button class="px-6 py-2 bg-green-600 text-white rounded-r hover:bg-green-700">
+                    Buscar
+                </button>
+            </div>
+        </div>
+
+        <!-- Grid de contenido principal -->
+        <div class="flex gap-8">
+            <!-- Sidebar con filtros -->
+            <div class="w-64 flex-shrink-0">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-bold mb-4">Categorías</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-green-600">Plantas de Interior</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-600">Plantas de Exterior</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-600">Herramientas</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-600">Macetas</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-600">Sustratos</a></li>
+                    </ul>
+
+                    <h3 class="text-lg font-bold mt-8 mb-4">Filtrar por</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium mb-2">Precio</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="price1" class="mr-2">
+                                    <label for="price1">0€ - 20€</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="price2" class="mr-2">
+                                    <label for="price2">20€ - 50€</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="price3" class="mr-2">
+                                    <label for="price3">50€ - 100€</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="price4" class="mr-2">
+                                    <label for="price4">+100€</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium mb-2">Dificultad de cuidado</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="care1" class="mr-2">
+                                    <label for="care1">Fácil</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="care2" class="mr-2">
+                                    <label for="care2">Intermedio</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="care3" class="mr-2">
+                                    <label for="care3">Experto</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de productos -->
+            <div class="flex-1">
+                <!-- Ordenar por -->
+                <div class="bg-white rounded-lg shadow-md p-4 mb-6 flex justify-between items-center">
+                    <span>24 productos</span>
+                    <select class="border rounded px-4 py-2">
+                        <option>Ordenar por</option>
+                        <option>Precio: Menor a Mayor</option>
+                        <option>Precio: Mayor a Menor</option>
+                        <option>Más Vendidos</option>
+                        <option>Más Nuevos</option>
+                    </select>
+                </div>
+
+                <!-- Grid de productos -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Producto ejemplo (repetir según necesidad) -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="400.png" alt="Producto" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold">Nombre del Producto</h3>
+                            <p class="text-gray-600 text-sm mt-1">Descripción corta del producto</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="font-bold text-green-600">29.99€</span>
+                                <button class="py-2 px-4 bg-green-600 text-white rounded hover:bg-green-700">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repetir estructura para más productos -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="400.png" alt="Producto" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold">Nombre del Producto</h3>
+                            <p class="text-gray-600 text-sm mt-1">Descripción corta del producto</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="font-bold text-green-600">29.99€</span>
+                                <button class="py-2 px-4 bg-green-600 text-white rounded hover:bg-green-700">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="400.png" alt="Producto" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold">Nombre del Producto</h3>
+                            <p class="text-gray-600 text-sm mt-1">Descripción corta del producto</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="font-bold text-green-600">29.99€</span>
+                                <button class="py-2 px-4 bg-green-600 text-white rounded hover:bg-green-700">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paginación -->
+                <div class="mt-8 flex justify-center">
+                    <nav class="flex space-x-2">
+                        <a href="#" class="px-4 py-2 border rounded hover:bg-green-600 hover:text-white">1</a>
+                        <a href="#" class="px-4 py-2 border rounded hover:bg-green-600 hover:text-white">2</a>
+                        <a href="#" class="px-4 py-2 border rounded hover:bg-green-600 hover:text-white">3</a>
+                        <span class="px-4 py-2">...</span>
+                        <a href="#" class="px-4 py-2 border rounded hover:bg-green-600 hover:text-white">10</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 mt-12 py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Contenido del footer igual al index -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-lg font-semibold mb-4">Jardines Urbanos</h3>
+                    <p>Transformando espacios urbanos en oasis verdes desde 2024</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
