@@ -6,263 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Jardines Urbanos</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="layout.js"></script>
+    <script src="dashboard.js"></script>
+    
 </head>
 
 <body class="bg-gray-50">
     <!-- Header con navegación -->
-    <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <img src="logo.png" alt="Logo" class="h-8">
-                </div>
-
-                <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <button class="p-2 hover:bg-gray-100 rounded-full relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                            </svg>
-                            <span
-                                class="absolute top-0 right-0 h-4 w-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">
-                                3
-                            </span>
-                        </button>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <img src="images.png" alt="Usuario" class="h-8 w-8 rounded-full">
-                        <span class="text-gray-700">María García</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div id="header-container"></div>
 
     <div class="flex h-screen">
         <!-- Sidebar -->
         <aside class="w-64 bg-white shadow-md">
             <nav class="mt-5 px-2">
-                <a href="#"
-                    class="group flex items-center px-2 py-2 text-base font-medium rounded-md bg-green-100 text-green-600">
+                <button id="dashboardTab" onclick="toggleDashboardView('dashboard')" 
+                    class="w-full flex items-center px-2 py-2 text-base font-medium rounded-md group">
                     <svg class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
                     Dashboard
-                </a>
-
-                <a href="#"
-                    class="mt-1 group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                </button>
+                <button id="gardenTab" onclick="toggleDashboardView('garden')" 
+                    class="w-full flex items-center px-2 py-2 text-base font-medium rounded-md group">
                     <svg class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     </svg>
                     Mi Jardín Virtual
-                </a>
+                </button>
 
-                <a href="#"
-                    class="mt-1 group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                <button id="cartTab" onclick="toggleDashboardView('cart')" 
+                    class="w-full flex items-center px-2 py-2 text-base font-medium rounded-md group">
                     <svg class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                    Carrito (3)
-                </a>
+                    Carrito
+                </button>
 
-                <a href="#"
-                    class="mt-1 group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                <button id="queriesTab" onclick="toggleDashboardView('queries')" 
+                    class="w-full flex items-center px-2 py-2 text-base font-medium rounded-md group">
                     <svg class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                     </svg>
                     Consultas
-                </a>
+                </button>
 
-                <a href="#"
-                    class="mt-1 group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+                <button id="settingsTab" onclick="toggleDashboardView('settings')" 
+                    class="w-full flex items-center px-2 py-2 text-base font-medium rounded-md group">
                     <svg class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     Configuración
-                </a>
+                </button>
             </nav>
         </aside>
 
         <!-- Contenido principal -->
         <main class="flex-1 overflow-y-auto bg-gray-50 p-8">
             <!-- Bienvenida Personalizada -->
-            <div class="mb-8">
-                <h1 class="text-2xl font-bold text-gray-900">¡Bienvenida de nuevo, María!</h1>
-                <p class="text-gray-600">Aquí tienes el resumen de todos tus jardines y actividades pendientes.</p>
-            </div>
-            <!-- Resumen general -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 bg-green-100 rounded-md p-3">
-                            <svg class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                            </svg>
-                        </div>
-                        <div class="ml-5">
-                            <h3 class="text-gray-900 text-lg">Total Jardines</h3>
-                            <p class="mt-2 text-3xl font-bold text-green-600">3</p>
-                        </div>
-                    </div>
-                </div>
+            <div id="dashboardView" class="space-y-8"></div>
 
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 bg-purple-100 rounded-md p-3">
-                            <svg class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg>
-                        </div>
-                        <div class="ml-5">
-                            <h3 class="text-gray-900 text-lg">Total Plantas</h3>
-                            <p class="mt-2 text-3xl font-bold text-purple-600">24</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 bg-yellow-100 rounded-md p-3">
-                            <svg class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <div class="ml-5">
-                            <h3 class="text-gray-900 text-lg">Tareas Hoy</h3>
-                            <p class="mt-2 text-3xl font-bold text-yellow-600">5</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 bg-blue-100 rounded-md p-3">
-                            <svg class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                            </svg>
-                        </div>
-                        <div class="ml-5">
-                            <h3 class="text-gray-900 text-lg">Consultas Activas</h3>
-                            <p class="mt-2 text-3xl font-bold text-blue-600">2</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- Vista Jardín -->
+            <div id="gardenView" class="hidden space-y-8">
+                <h1 class="text-2xl font-bold text-gray-900">Mi Jardín Virtual</h1>
+                <!-- Aquí va el contenido del jardín -->
             </div>
 
-
-             <!-- Vista rápida de Jardines -->
-             <div class="mb-8">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-bold text-gray-900">Mis Jardines</h2>
-                    <button class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 flex items-center">
-                        <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                        </svg>
-                        Nuevo Jardín
-                    </button>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Jardín Card -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="p-6">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="text-lg font-bold text-gray-900">Casa Principal</h3>
-                                    <p class="text-sm text-gray-500">3 espacios • 12 plantas</p>
-                                </div>
-                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
-                                    Todo en orden
-                                </span>
-                            </div>
-                            <div class="mt-4 grid grid-cols-2 gap-4 text-sm">
-                                <div>
-                                    <p class="text-gray-500">Próximo riego</p>
-                                    <p class="font-medium text-gray-900">Hoy (2 plantas)</p>
-                                </div>
-                                <div>
-                                    <p class="text-gray-500">Última actividad</p>
-                                    <p class="font-medium text-gray-900">Hace 2 horas</p>
-                                </div>
-                            </div>
-                            <div class="mt-6">
-                                <a href="#" class="text-green-600 hover:text-green-700 font-medium">Ver jardín →</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Más jardines... -->
-                </div>
+            <!-- Vista Carrito -->
+            <div id="cartView" class="hidden space-y-8">
+                <h1 class="text-2xl font-bold text-gray-900">Mi Carrito</h1>
+                <!-- Aquí va el contenido del carrito -->
             </div>
 
-            <!-- Actividades Pendientes -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-                <div class="px-6 py-4 border-b border-gray-200">
-                    <h2 class="text-xl font-bold text-gray-900">Actividades Pendientes de Hoy</h2>
-                </div>
-                <div class="p-6">
-                    <div class="space-y-4">
-                        <!-- Actividad -->
-                        <div class="flex items-center justify-between border-b border-gray-200 pb-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0">
-                                    <span class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div>
-                                    <h4 class="text-sm font-medium text-gray-900">Regar Orquídeas</h4>
-                                    <p class="text-sm text-gray-500">Casa Principal - Sala</p>
-                                </div>
-                            </div>
-                            <button class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 text-sm">
-                                Completar
-                            </button>
-                        </div>
-                        <!-- Más actividades... -->
-                    </div>
-                </div>
+            <!-- Vista Consultas -->
+            <div id="queriesView" class="hidden space-y-8">
+                <h1 class="text-2xl font-bold text-gray-900">Mis Consultas</h1>
+                <!-- Aquí va el contenido de consultas -->
             </div>
 
-            <!-- Últimas Consultas -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                    <h2 class="text-xl font-bold text-gray-900">Últimas Consultas</h2>
-                    <a href="#" class="text-green-600 hover:text-green-700 text-sm">Ver todas</a>
-                </div>
-                <div class="p-6">
-                    <div class="space-y-4">
-                        <!-- Consulta -->
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                                </svg>
-                                <div>
-                                    <h4 class="text-sm font-medium text-gray-900">Problema con hojas amarillas</h4>
-                                    <p class="text-sm text-gray-500">Casa Principal - Orquídea</p>
-                                </div>
-                            </div>
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">
-                                En revisión
-                            </span>
-                        </div>
-                        <!-- Más consultas... -->
-                    </div>
-                </div>
+            <!-- Vista Configuración -->
+            <div id="settingsView" class="hidden space-y-8">
+                <h1 class="text-2xl font-bold text-gray-900">Configuración</h1>
+                <!-- Aquí va el contenido de configuración -->
             </div>
+       
+            
         </main>
 
         <!-- Panel lateral de notificaciones (inicialmente oculto) -->
@@ -297,6 +125,28 @@
             </div>
         </aside>
     </div>
+    <!-- <script>
+        function toggleDashboardView(view) {
+            // Ocultar todas las vistas
+            const views = ['dashboard', 'garden', 'cart', 'queries', 'settings'];
+            views.forEach(v => {
+                document.getElementById(`${v}View`).classList.add('hidden');
+                document.getElementById(`${v}Tab`).classList.remove('bg-green-100', 'text-green-600');
+                document.getElementById(`${v}Tab`).classList.add('text-gray-600', 'hover:bg-gray-50', 'hover:text-gray-900');
+            });
+
+            // Mostrar la vista seleccionada
+            document.getElementById(`${view}View`).classList.remove('hidden');
+            document.getElementById(`${view}Tab`).classList.remove('text-gray-600', 'hover:bg-gray-50', 'hover:text-gray-900');
+            document.getElementById(`${view}Tab`).classList.add('bg-green-100', 'text-green-600');
+        }
+
+        // Inicializar con la vista del dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleDashboardView('dashboard');
+        });
+    </script> -->
+    <div id="footer-container"></div>
 </body>
 
 </html>

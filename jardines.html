@@ -5,38 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Jardines - Jardines Urbanos</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="layout.js"></script>
 </head>
 <body class="bg-gray-50">
      <!-- Header con navegación -->
-     <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <img src="logo.png" alt="Logo" class="h-8">
-                </div>
-
-                <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <button class="p-2 hover:bg-gray-100 rounded-full relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                            </svg>
-                            <span
-                                class="absolute top-0 right-0 h-4 w-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">
-                                3
-                            </span>
-                        </button>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <img src="images.png" alt="Usuario" class="h-8 w-8 rounded-full">
-                        <span class="text-gray-700">María García</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+     <div id="header-container"></div>
 
     <div class="flex h-screen">
         <!-- Sidebar similar al anterior... -->
@@ -273,5 +246,7 @@
             </div>
         </main>
     </div>
+    
+    <div id="footer-container"></div>
 </body>
 </html>

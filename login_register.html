@@ -5,36 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Jardines Urbanos</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="layout.js"></script>
 </head>
 <body class="bg-gray-50">
-    <!-- Header -->
-    <header class="bg-white shadow">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex space-x-7">
-                    <div class="flex-shrink-0 h-12 w-40">
-                        <img src="logo.png" alt="Logo" class="h-12">
-                    </div>
-                    <nav class="flex space-x-4">
-                        <a href="#" class="text-gray-700 hover:text-green-600">Inicio</a>
-                        <a href="tienda.html" class="text-gray-700 hover:text-green-600">Tienda</a>
-                        <a href="blog.html" class="text-gray-700 hover:text-green-600">Blog</a>
-                        <a href="contacto.html" class="text-gray-700 hover:text-green-600">Contáctanos</a>
-                    </nav>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <a href="carrito.html" class="py-2 px-4 bg-green-600 text-white rounded hover:bg-green-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="9" cy="21" r="1"></circle>
-                            <circle cx="20" cy="21" r="1"></circle>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                        </svg>
-                    </a>
-                    <a href="login.html" class="py-2 px-4 bg-green-600 text-white rounded hover:bg-green-700">Login</a>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div id="header-container"></div>
+
 
     <!-- Contenido principal -->
     <main class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -42,17 +17,19 @@
             <!-- Tabs de Login/Registro -->
             <div class="bg-white rounded-t-lg border-b">
                 <div class="flex">
-                    <button class="flex-1 py-4 px-6 text-sm font-medium text-gray-500 bg-gray-50 rounded-tl-lg hover:text-gray-700">
+                    <button id="loginTab" onclick="toggleView('login')" 
+                        class="flex-1 py-4 px-6 text-sm font-medium hover:text-gray-700 text-green-600 bg-white rounded-tl-lg border-b-2 border-green-600 focus:outline-none">
                         Iniciar Sesión
                     </button>
-                    <button class="flex-1 py-4 px-6 text-sm font-medium text-green-600 bg-white rounded-tr-lg border-b-2 border-green-600">
+                    <button id="registerTab" onclick="toggleView('register')"
+                        class="flex-1 py-4 px-6 text-sm font-medium text-gray-500 bg-gray-50 rounded-tr-lg hover:text-gray-700 focus:outline-none">
                         Registrarse
                     </button>
                 </div>
             </div>
 
             <!-- Formulario de Login -->
-            <div class="hidden bg-white shadow rounded-b-lg px-8 py-10">
+            <div id="loginForm" class="bg-white shadow rounded-b-lg px-8 py-10">
                 <div class="mb-8 text-center">
                     <h2 class="text-3xl font-bold text-gray-900">
                         Bienvenido de nuevo
@@ -135,7 +112,7 @@
             </div>
 
             <!-- Formulario de Registro (inicialmente oculto) -->
-            <div class=" bg-white shadow rounded-b-lg px-8 py-10">
+            <div id="registerForm" class=" bg-white shadow rounded-b-lg px-8 py-10 hidden">
                 <div class="mb-8 text-center">
                     <h2 class="text-3xl font-bold text-gray-900">
                         Crea tu cuenta
@@ -204,15 +181,38 @@
                 </form>
             </div>
         </div>
+        
     </main>
+    <script>
+        function toggleView(view) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+    
+            if (view === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                // Actualizar estilos de los tabs
+                loginTab.classList.remove('text-gray-500', 'bg-gray-50');
+                loginTab.classList.add('text-green-600', 'bg-white', 'border-b-2', 'border-green-600');
+                registerTab.classList.remove('text-green-600', 'bg-white', 'border-b-2', 'border-green-600');
+                registerTab.classList.add('text-gray-500', 'bg-gray-50');
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                // Actualizar estilos de los tabs
+                registerTab.classList.remove('text-gray-500', 'bg-gray-50');
+                registerTab.classList.add('text-green-600', 'bg-white', 'border-b-2', 'border-green-600');
+                loginTab.classList.remove('text-green-600', 'bg-white', 'border-b-2', 'border-green-600');
+                loginTab.classList.add('text-gray-500', 'bg-gray-50');
+            }
+        }
+    </script>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 mt-12 py-8">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center">
-                <p>&copy; 2024 Jardines Urbanos. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-container"></div>
+    
+
+ 
 </body>
 </html>
